@@ -9,11 +9,11 @@ import NecklaceImg from "../assets/necklace.png";
 import BagImg from "../assets/bag.png";
 
 const products = [
-  { id: 1, name: "Shirt", price: 20, image: shirtImg },
-  { id: 2, name: "Jeans", price: 40, image: jeansImg },
-  { id: 3, name: "Shoes", price: 60, image: shoesImg },
-  { id: 4, name: "Necklace", price: 30, image: NecklaceImg },
-  { id: 5, name: "Hand Bag", price: 80, image: BagImg },
+  { id: 1, name: "Shirt", price: 2000, image: shirtImg },
+  { id: 2, name: "Jeans", price: 4000, image: jeansImg },
+  { id: 3, name: "Shoes", price: 6000, image: shoesImg },
+  { id: 4, name: "Necklace", price: 300, image: NecklaceImg },
+  { id: 5, name: "Hand Bag", price: 8000, image: BagImg },
 ];
 
 function ProductList({ cartItems, setCartItems }) {
@@ -47,7 +47,7 @@ function ProductList({ cartItems, setCartItems }) {
             />
             {/* Product Details */}
             <h3 className="text-xl font-semibold">{product.name}</h3>
-            <p className="text-gray-600">${product.price}</p>
+            <p className="text-gray-600">PKR {product.price}</p>
 
             <button
               onClick={() => addToCart(product)}
