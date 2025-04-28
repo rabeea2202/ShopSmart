@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cartItems, setCartItems] = useState([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="bg-amber-100">
+      <nav className="px-10 py-10 pt-6 pb-6 mb-10 flex items-center justify-between">
+        <h1 className="text-yellow-600 font-bold text-5xl">ShopSmart &#128722;</h1>
+        <div className="flex items-center space-x-8">
+          <Link to="/products" className="text-xl font-bold">Products</Link>
+          <Link to="/cart" className="text-xl font-bold">Cart ({cartItems.length})</Link>
+        </div>
+      </nav>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="p-10">
+
+
+        <Routes>
+          <Route
+            path="/"
+            element={<ProductList cartItems={cartItems} setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/products"
+            element={<ProductList cartItems={cartItems} setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart cartItems={cartItems} setCartItems={setCartItems} />}
+          />
+          <Route
+            path="/checkout"
+            element={<Checkout cartItems={cartItems} />}
+          />
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
